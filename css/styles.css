@@ -1,0 +1,170 @@
+:root {
+    --azul: #1b263b;
+    --azul2: #415a77;
+    --gris: #e5e7eb;
+    --fondo: #f8fafc;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--fondo);
+    color: #1f2937;
+}
+
+/* CONTENEDOR A4 FRIENDLY */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* TITULO */
+h1 {
+    text-align: center;
+    color: var(--azul);
+    margin-bottom: 10px;
+}
+
+/* RESUMEN */
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.card {
+    background: var(--azul);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.card span {
+    display: block;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+/* GRAFICO */
+.grafico {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.barras {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 180px; /* compacto para A4 */
+    border-left: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    padding: 5px;
+}
+
+.barras {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 220px;
+    padding: 10px;
+    border-left: 2px solid #cbd5e1;
+    border-bottom: 2px solid #cbd5e1;
+    background: #f8fafc;
+    gap: 8px;
+}
+
+/* CONTENEDOR DE CADA BARRA */
+.barra-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    flex: 1;
+}
+
+/* BARRA REAL */
+.barra {
+    width: 70%;
+    min-height: 5px;
+    background: linear-gradient(180deg, #2c3e50, #1b263b);
+    border-radius: 6px 6px 0 0;
+    transition: 0.4s ease;
+}
+
+/* ETIQUETA */
+.label {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #334155;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* LISTA */
+.lista {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+/* BOTÓN */
+button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background: var(--azul);
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .resumen {
+        grid-template-columns: 1fr;
+    }
+
+    .barras {
+        overflow-x: auto;
+    }
+}
+
+/* 🧾 IMPRESIÓN EN UNA HOJA */
+@media print {
+
+    body {
+        background: white;
+    }
+
+    button {
+        display: none;
+    }
+
+    .container {
+        padding: 0;
+        transform: scale(0.95);
+        transform-origin: top;
+    }
+
+    .grafico, .lista, .resumen {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+     .barras {
+        height: 180px;
+        page-break-inside: avoid;
+    }
+
+    .barra {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
